@@ -1,7 +1,4 @@
 package monprojet.entity;
-import java.time.LocalDate;
-import java.util.List;
-import org.apache.commons.lang3.builder.ToStringExclude;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
