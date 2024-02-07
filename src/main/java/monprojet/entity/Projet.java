@@ -11,10 +11,18 @@ import lombok.*;
 
 public class Projet {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int code;
+
+    @NonNull
     private String nom;
+
+    @NonNull
     private LocalDate debut;
+
     private LocalDate fin;
+
+    @ToString.Exclude
 
     @OneToMany(mappedBy = "projet")
     private List<Participation> participations;

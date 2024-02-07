@@ -10,6 +10,6 @@ import lombok.*;
 @Entity
 
 public class Commercial extends Employe {
-    @PositiveOrZero
+    @NonNull
     private float pourcentage;
 }

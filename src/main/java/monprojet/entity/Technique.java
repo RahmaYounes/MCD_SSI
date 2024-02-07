@@ -8,5 +8,7 @@ import lombok.*;
 @Entity
 
 public class Technique extends Employe {
+
+    @NonNull
     private float montantPrime;
 }

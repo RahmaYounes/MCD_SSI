@@ -1,5 +1,6 @@
 package monprojet.entity;
-
+import java.time.LocalDate;
+import java.util.List;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
@@ -27,10 +28,15 @@ public class Employe {
     @Email
     private String email;
 
-   // @ManyToMany (mappedBy = "contributeur")
-   // List<Projet> affectation;
+    @ToString.Exclude
+    @OneToMany(mappedBy = "superieur", fetch = FetchType.LAZY)
+    private List<Employe> subordonnes;
 
-   // @ManyToOne
-   // private Employe superieur;
+    @ManyToOne(optional = true)
+    private Employe superieur;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "contributeur", fetch = FetchType.LAZY)
+    private List<Participation> participations;
 
 }

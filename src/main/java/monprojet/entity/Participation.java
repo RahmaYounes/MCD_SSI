@@ -13,14 +13,15 @@ public class Participation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @NonNull
     private String role;
+
+    @NonNull
     private float pourcentage;
 
     @ManyToOne
-    @JoinColumn(name = "employe_matricule")
     private Employe employe;
 
     @ManyToOne
-    @JoinColumn(name = "projet_code")
     private Projet projet;
 }

@@ -31,11 +31,10 @@ class EmployeRepositoryTest {
         // Insérer des données dans la base de données (utilisez data.sql pour cela)
 
         // Calculer le pourcentage total de participation de l'employé avec matricule 1
-        Float totalParticipationPercentage = dao.calculateTotalParticipationPercentage(1);
-
+        log.info("On peut calcul de pourcentage de participation d'un employé ");
+        float pourcentage = dao.calculPourcentageParticipation(1); // Pourcentage de participation d'Elyes Lamine
         // Vérifier que le pourcentage total est correct (faites des assertions appropriées en fonction des données insérées)
-        assertEquals(30.0f, totalParticipationPercentage, 0.01f);
-    }
+        assertEquals(30.0, pourcentage, 0.01);    }
 }
 
 

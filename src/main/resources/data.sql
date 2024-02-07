@@ -1,12 +1,14 @@
 -- Initialisation des tables
 INSERT INTO Employe(matricule, nom, email) VALUES
     (1, 'Rémi Bastide', 'Remi.Bastide@univ-jfc.fr'), -- Les clés sont auto-générées
-    (2, 'Elyes Lamine', 'Elyes.Lamine@univ-jfc.fr'),
-    (3, 'Jean-Marie Pécatte', 'jean-marie.pecatte@iut-tlse3.fr');
+    (2, 'Elyes Lamine', 'Elyes.Lamine@univ-jfc.fr');
 -- On peut fixer les clés auto-générées, mais il faut ensuite
 -- réinitialiser le compteur de clé auto-générée
 -- Attention : la syntaxe est différente selon le SGBD utilisé
 -- Ici la syntaxe pour le SGBD H2
+INSERT INTO Employe(matricule, superieur_matricule, nom, email) VALUES
+    (3, (SELECT matricule FROM Employe WHERE nom like '%Bas%'); 'Jean-Marie Pécatte', 'jean-marie.pecatte@univ-jfc.fr'),
+
 ALTER TABLE Employe ALTER COLUMN matricule RESTART WITH 4;
 
 INSERT INTO Commercial (matricule, nom, email, pourcentage) VALUES 
@@ -29,9 +31,8 @@ INSERT INTO Projet (code, nom, debut, fin) VALUES
 
 
 -- Insertion des participations
-INSERT INTO Participation (id, projet, role, pourcentage) VALUES
-    (1, 101, 'Responsable', 20.0), -- Participation de Jean Dupont dans Projet A
-    (1, 102, 'Support', 10.0), -- Participation de Jean Dupont dans Projet B
-    (2, 103, 'Développeur', 15.0), -- Participation d'Alice Martin dans Projet C
-    (3, 102, 'Comptable', 30.0), -- Participation de Claire Dubois dans Projet B
-    (3, 103, 'RH', 20.0); -- Participation de Claire Dubois dans Projet C
+INSERT INTO Participation INSERT INTO Participation(id, affectation_code, contributeur_matricule, pourcentage, role) VALUES
+    (default, 101, 2 , 30 , 'Responsable'), -- Participation de Jean Dupont dans Projet A
+    (default, 102, 3 , 30 ,'Support'), -- Participation de Jean Dupont dans Projet B
+    (default, 103, 1 , 30 , 'Développeur'); -- Participation d'Alice Martin dans Projet C
+   
