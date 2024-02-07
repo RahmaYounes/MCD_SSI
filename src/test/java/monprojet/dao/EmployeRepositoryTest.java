@@ -27,4 +27,18 @@ class EmployeRepositoryTest {
         assertNotNull(employe, "On doit trouver l'employé Rémi Bastide dans data.sql");
         assertEquals("Remi.Bastide@univ-jfc.fr", employe.getEmail());
     }
+
+    @Test
+     void testCalculateTotalParticipationPercentage() {
+        // Insérer des données dans la base de données (utilisez data.sql pour cela)
+
+        // Calculer le pourcentage total de participation de l'employé avec matricule 1
+        Float totalParticipationPercentage = dao.calculateTotalParticipationPercentage(1);
+
+        // Vérifier que le pourcentage total est correct (faites des assertions appropriées en fonction des données insérées)
+        assertEquals(30.0f, totalParticipationPercentage, 0.01f);
+    }
+}
+
+
 }

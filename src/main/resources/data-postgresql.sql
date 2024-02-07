@@ -1,4 +1,4 @@
--- Initialisation des tables
+-- Initialisation de toutes les tables
 INSERT INTO Employe(matricule, nom, email) VALUES
     (1, 'Rémi Bastide', 'Remi.Bastide@univ-jfc.fr'), -- Les clés sont auto-générées
     (2, 'Elyes Lamine', 'Elyes.Lamine@univ-jfc.fr'),
