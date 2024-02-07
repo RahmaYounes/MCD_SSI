@@ -7,21 +7,11 @@ INSERT INTO Employe(matricule, nom, email) VALUES
 -- Attention : la syntaxe est différente selon le SGBD utilisé
 -- Ici la syntaxe pour le SGBD H2
 INSERT INTO Employe(matricule, superieur, nom, email) VALUES
- (3, 1, 'Jean-Marie Pécatte', 'jean-marie.pecatte@univ-jfc.fr');
+    (3, 1, 'Jean-Marie Pécatte', 'jean-marie.pecatte@univ-jfc.fr'),
+    (4, 2, 'Delphine viela', 'delphine.viela@univ-jfc.fr');
 
 ALTER TABLE Employe ALTER COLUMN matricule RESTART WITH 4;
 
-INSERT INTO Commercial (matricule, nom, email, pourcentage) VALUES 
-    (4, 'Paul Lefevre', 'paul.lefevre@example.com', 10.0), -- Commercial avec un pourcentage de participation
-    (5, 'Sophie Leroy', 'sophie.leroy@example.com', 15.0); -- Commercial avec un pourcentage de participation
-
-INSERT INTO Administratif (matricule, nom, email, diplome) VALUES 
-    (6, 'Lucie Robert', 'lucie.robert@example.com', 'BTS Comptabilité'), -- Employé administratif avec un diplôme
-    (7, 'Marc Petit', 'marc.petit@example.com', 'Licence RH'); -- Employé administratif avec un diplôme
-
-INSERT INTO Technique (matricule, nom, email, montantPrime) VALUES 
-    (8, 'Thomas Durand', 'thomas.durand@example.com', 500.0), -- Employé technique avec un montant de prime
-    (9, 'Laura Martinez', 'laura.martinez@example.com', 750.0); -- Employé technique avec un montant de prime
 
 -- Insertion des projets
 INSERT INTO Projet (code, nom, debut, fin) VALUES 
@@ -36,3 +26,13 @@ INSERT INTO Participation INSERT INTO Participation(id, affectation_code, contri
     (default, 102, 3 , 30 ,'Support'), -- Participation de Jean Dupont dans Projet B
     (default, 103, 1 , 30 , 'Développeur'); -- Participation d'Alice Martin dans Projet C
    
+
+INSERT INTO Commercial (matricule, pourcentage) VALUES 
+    (4 , 10); -- Commercial avec un pourcentage de participation
+
+INSERT INTO Administratif (matricule, diplome) VALUES 
+    (2, 'Diplome ingenieur'); -- Employé administratif avec un diplôme
+
+INSERT INTO Technique (matricule, montantPrime) VALUES 
+    (1, 500.0), -- Employé technique avec un montant de prime
+    (3, 500.0); -- Employé technique avec un montant de prime
