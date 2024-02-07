@@ -18,7 +18,7 @@ public interface EmployeRepository extends JpaRepository<Employe, Integer> {
 
     // Calcil pourcentage de participoation 
 
-    @Query("SELECT SUM(p.pourcentage)" +
+    @Query("SELECT SUM(p.pourcentage) " +
          "FROM Participation p " +
          "WHERE p.employe.matricule = :matricule AND p.projet.fin IS NULL")
     float calculPourcentageParticipation(Integer matricule);

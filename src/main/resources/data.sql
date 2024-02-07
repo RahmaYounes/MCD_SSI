@@ -6,8 +6,8 @@ INSERT INTO Employe(matricule, nom, email) VALUES
 -- réinitialiser le compteur de clé auto-générée
 -- Attention : la syntaxe est différente selon le SGBD utilisé
 -- Ici la syntaxe pour le SGBD H2
-INSERT INTO Employe(matricule, superieur_matricule, nom, email) VALUES
-    (3, (SELECT matricule FROM Employe WHERE nom like '%Bas%'); 'Jean-Marie Pécatte', 'jean-marie.pecatte@univ-jfc.fr'),
+INSERT INTO Employe(matricule, superieur, nom, email) VALUES
+ (3, 1, 'Jean-Marie Pécatte', 'jean-marie.pecatte@univ-jfc.fr');
 
 ALTER TABLE Employe ALTER COLUMN matricule RESTART WITH 4;
 

@@ -36,7 +36,7 @@ public class Employe {
     private Employe superieur;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "contributeur", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "employe", fetch = FetchType.LAZY)
     private List<Participation> participations;
 
 }
