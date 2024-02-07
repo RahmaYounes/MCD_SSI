@@ -9,7 +9,7 @@ INSERT INTO Employe(matricule, nom, email) VALUES
 -- Ici la syntaxe pour le SGBD H2
 ALTER TABLE Employe ALTER COLUMN matricule RESTART WITH 4;
 
-INSERT INTO Comercial (matricule, nom, email, pourcentage) VALUES 
+INSERT INTO Commercial (matricule, nom, email, pourcentage) VALUES 
     (4, 'Paul Lefevre', 'paul.lefevre@example.com', 10.0), -- Commercial avec un pourcentage de participation
     (5, 'Sophie Leroy', 'sophie.leroy@example.com', 15.0); -- Commercial avec un pourcentage de participation
 
