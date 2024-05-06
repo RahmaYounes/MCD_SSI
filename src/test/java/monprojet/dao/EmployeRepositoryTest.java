@@ -6,9 +6,11 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-
 import monprojet.entity.*;
+import java.util.List;
+import monprojet.entity.*;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.test.context.jdbc.Sql;
 
 
 @Log4j2 // Génère le 'logger' pour afficher les messages de trace
@@ -18,24 +20,21 @@ class EmployeRepositoryTest {
     @Autowired
     private EmployeRepository dao;
 
+
     @Test
-    void onTrouveUnEmployeParSonNom() {
-        log.info("On peut trouver un employé par son nom (requête dans le repository)");
-        Employe employe = dao.findByNom("Rémi Bastide");
+    void TrouverUnEmployeParSonNom() {
+        log.info("Trouver un employé par son nom: ");
+        Employe employe = dao.findByNom("Elyes Lamine");
+        assertNotNull(employe, "Le mail de l'employé Elyes Lamine ");
+        assertEquals("Elyes.Lamine@univ-jfc.fr", employe.getEmail());
+    }
+    @Test
+    void TrouverUnEmployeParSonMatricule() {
+        log.info("Trouver un employé par son matricule:");
+        Employe employe = dao.findByMatricule(2);
         assertNotNull(employe, "On doit trouver l'employé Rémi Bastide dans data.sql");
         assertEquals("Remi.Bastide@univ-jfc.fr", employe.getEmail());
     }
 
-    @Test
-     void testCalculateTotalParticipationPercentage() {
-        // Insérer des données dans la base de données (utilisez data.sql pour cela)
-
-        // Calculer le pourcentage total de participation de l'employé avec matricule 1
-        log.info("On peut calcul de pourcentage de participation d'un employé ");
-        float pourcentage = dao.calculPourcentageParticipation(1); // Pourcentage de participation d'Elyes Lamine
-        // Vérifier que le pourcentage total est correct (faites des assertions appropriées en fonction des données insérées)
-        assertEquals(30.0, pourcentage, 0.01);    }
 }
-
-
 

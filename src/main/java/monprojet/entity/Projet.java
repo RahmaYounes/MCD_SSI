@@ -1,6 +1,7 @@
 package monprojet.entity;
 import java.time.LocalDate;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.*;
 
@@ -9,21 +10,24 @@ import lombok.*;
 @Getter @Setter @ToString
 @Entity
 
+@NoArgsConstructor
+@RequiredArgsConstructor
+
 public class Projet {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int code;
+    private Integer code;
 
+   
+    @DateTimeFormat
+    private LocalDate dateDebut;
+    
     @NonNull
     private String nom;
 
-    @NonNull
-    private LocalDate debut;
 
-    private LocalDate fin;
+    @DateTimeFormat
+    private LocalDate dateFin;
 
-    @ToString.Exclude
 
-    @OneToMany(mappedBy = "projet")
-    private List<Participation> participations;
 }

@@ -14,13 +14,6 @@ public interface EmployeRepository extends JpaRepository<Employe, Integer> {
      * @return L'employe correspondant au nom fourni, ou null si pas trouvé.
      */
     Employe findByNom(String nomDeLemploye);
-
-
-    // Calcil pourcentage de participoation 
-
-    @Query("SELECT SUM(p.pourcentage) " +
-         "FROM Participation p " +
-         "WHERE p.employe.matricule = :matricule AND p.projet.fin IS NULL")
-    float calculPourcentageParticipation(Integer matricule);
+    Employe findByMatricule(Integer matriculeDeLemploye);
 
 }

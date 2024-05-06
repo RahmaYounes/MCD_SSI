@@ -1,27 +1,23 @@
 package monprojet.entity;
 
-
 import jakarta.persistence.*;
-
 import lombok.*;
 
-@Getter @Setter @ToString
+import java.util.List;
+@Getter@Setter@ToString
 @Entity
-
 public class Participation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer idParticipation;
 
-    @NonNull
     private String role;
 
-    @NonNull
     private float pourcentage;
 
-    @ManyToOne
-    private Employe employe;
+    @ManyToMany
+    private List<Projet> projets;
 
-    @ManyToOne
-    private Projet projet;
+    @ManyToMany
+    private List<Employe> employes;
 }

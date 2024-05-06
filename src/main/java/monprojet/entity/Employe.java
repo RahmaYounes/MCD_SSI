@@ -10,33 +10,25 @@ import lombok.*;
 // cf. https://examples.javacodegeeks.com/spring-boot-with-lombok/
 
 
-@Inheritance(strategy = InheritanceType.JOINED) // Utilisation de l'héritage avec stratégie JOINED
-
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Utilisation de l'héritage avec stratégie JOINED
+@DiscriminatorColumn(name="employe_type")
 @Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
 @Entity
 
 public class Employe {
+
     @Id  @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer matricule;
 
     @NonNull
     private String nom;
 
-
-    // Test
-    
     @Email
     private String email;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "superieur", fetch = FetchType.LAZY)
-    private List<Employe> subordonnes;
-
-    @ManyToOne(optional = true)
+    @OneToOne
     private Employe superieur;
 
-    @ToString.Exclude
-    @OneToMany(mappedBy = "employe", fetch = FetchType.LAZY)
-    private List<Participation> participations;
-
+    @OneToMany
+    private List<Employe> subordonne;
 }

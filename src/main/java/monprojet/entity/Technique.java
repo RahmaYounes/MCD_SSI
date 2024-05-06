@@ -6,6 +6,7 @@ import lombok.*;
 
 @Getter @Setter  @ToString
 @Entity
+@DiscriminatorValue("C")
 
 public class Technique extends Employe {
 

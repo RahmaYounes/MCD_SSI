@@ -8,6 +8,7 @@ import lombok.*;
 
 @Getter @Setter  @ToString
 @Entity
+@DiscriminatorValue("A")
 
 public class Administratif extends Employe {
     private String diplome;

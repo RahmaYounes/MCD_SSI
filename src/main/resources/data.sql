@@ -1,38 +1,30 @@
 -- Initialisation des tables
-INSERT INTO Employe(matricule, nom, email) VALUES
-    (1, 'Rémi Bastide', 'Remi.Bastide@univ-jfc.fr'), -- Les clés sont auto-générées
-    (2, 'Elyes Lamine', 'Elyes.Lamine@univ-jfc.fr');
+INSERT INTO Employe(employe_type, matricule, montant_prime, pourcentage, diplome, nom, email) VALUES
+    ('A',1, null, null, 'Master', 'Elyes Lamine', 'Elyes.Lamine@univ-jfc.fr'),
+    ('B', 2, null, 10, null, 'Rémi Bastide', 'Remi.Bastide@univ-jfc.fr'), 
+    ('C', 3, 1000, null, null, 'Jean-Marie Pécatte', 'JM.Pecatte@univ-jfc.fr');
 -- On peut fixer les clés auto-générées, mais il faut ensuite
 -- réinitialiser le compteur de clé auto-générée
 -- Attention : la syntaxe est différente selon le SGBD utilisé
 -- Ici la syntaxe pour le SGBD H2
-INSERT INTO Employe(matricule, superieur, nom, email) VALUES
-    (3, 1, 'Jean-Marie Pécatte', 'jean-marie.pecatte@univ-jfc.fr'),
-    (4, 2, 'Delphine viela', 'delphine.viela@univ-jfc.fr');
-
 ALTER TABLE Employe ALTER COLUMN matricule RESTART WITH 4;
 
 
--- Insertion des projets
-INSERT INTO Projet (code, nom, debut, fin) VALUES 
-    (101, 'Projet A', '2024-01-01', NULL), -- Projet en cours
-    (102, 'Projet B', '2023-06-01', '2023-12-31'), -- Projet terminé
-    (103, 'Projet C', '2024-02-01', NULL); -- Projet en cours
+INSERT INTO Projet(code, nom, date_debut, date_fin) VALUES
+(default, 'Projet1', '2024-01-03', null),
+(default, 'Projet2', '2024-02-02', null),
+(default, 'Projet3', '2022-03-10', '2023-05-10');
 
+INSERT INTO Participation(role, pourcentage) VALUES
+('Directeur', 20),
+('Ingénieur', 50),
+('Informaticien',30);
 
--- Insertion des participations
-INSERT INTO Participation INSERT INTO Participation(id, affectation_code, contributeur_matricule, pourcentage, role) VALUES
-    (default, 101, 2 , 30 , 'Responsable'), -- Participation de Jean Dupont dans Projet A
-    (default, 102, 3 , 30 ,'Support'), -- Participation de Jean Dupont dans Projet B
-    (default, 103, 1 , 30 , 'Développeur'); -- Participation d'Alice Martin dans Projet C
-   
-
-INSERT INTO Commercial (matricule, pourcentage) VALUES 
-    (4 , 10); -- Commercial avec un pourcentage de participation
-
-INSERT INTO Administratif (matricule, diplome) VALUES 
-    (2, 'Diplome ingenieur'); -- Employé administratif avec un diplôme
-
-INSERT INTO Technique (matricule, montantPrime) VALUES 
-    (1, 500.0), -- Employé technique avec un montant de prime
-    (3, 500.0); -- Employé technique avec un montant de prime
+INSERT INTO Participation_employes(employes_matricule, participation_id_participation) VALUES 
+(1,1),
+(2,2),
+(3,3);
+INSERT INTO Participation_projets(participation_id_participation, projets_code) VALUES
+(1,1),
+(1,2),
+(1,3);
